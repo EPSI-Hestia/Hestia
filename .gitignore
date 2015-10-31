@@ -1,3 +1,13 @@
+
+#Custom
+*.pyc
+bin
+dist
+build
+
+.idea/
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

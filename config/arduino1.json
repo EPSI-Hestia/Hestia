@@ -1,0 +1,55 @@
+{
+	"mongo":
+	{
+		"mongo_host": "mongo_host",
+		"mongo_port": 12345,
+		"mongo_db": "db.Name",
+		"mongo_user": "db.User",
+		"mongo_pwd": "db.Pwd"
+	},
+
+	"board":
+	{
+		"name" : "board.Name"
+	},
+
+	"agents":
+	[
+		{
+			"name" : "light_agent_1",
+			"pin_type" : "analogic",
+			"pin" : 55,
+			"pin_mode": "INPUT"
+		},
+		{
+			"name" : "temp_agent_1",
+			"pin_type" : "analogic",
+			"pin" : 54,
+			"pin_mode": "INPUT"
+		},
+	  	{
+			"name" : "light_agent_2",
+			"pin_type" : "analogic",
+			"pin" : 56,
+			"pin_mode": "INPUT"
+		},
+		{
+			"name" : "digital_agent_led_1",
+			"pin_type" : "digital",
+			"pin" : 2,
+			"pin_mode": "OUTPUT"
+		},
+	  	{
+			"name" : "digital_agent_touch_1",
+			"pin_type" : "digital",
+			"pin" : 3,
+			"pin_mode": "INPUT"
+		},
+	  	{
+			"name" : "digital_agent_buzzer_1",
+			"pin_type" : "digital",
+			"pin" : 4,
+			"pin_mode": "OUTPUT"
+		}
+	]
+}
