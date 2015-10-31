@@ -1,6 +1,6 @@
-from utils.pin import pin
-from dao.model.agent_model import agent_model
-from utils.logger import logger
+from src.commons.utils.pin import pin
+from src.commons.dao.model.agent_model import agent_model
+from src.commons.utils.logger import logger
 
 from threading import Thread
 import time

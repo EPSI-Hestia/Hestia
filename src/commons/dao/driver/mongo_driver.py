@@ -1,5 +1,5 @@
 from pymongo import *
-from utils.logger import logger
+from src.commons.utils.logger import logger
 
 class mongo_driver(object):
 

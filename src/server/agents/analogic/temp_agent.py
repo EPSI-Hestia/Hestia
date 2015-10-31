@@ -1,4 +1,4 @@
-from .analogic_agent import analogic_agent
+from src.server.agents.analogic.analogic_agent import analogic_agent
 
 from math import log
 

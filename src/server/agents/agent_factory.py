@@ -1,6 +1,6 @@
-from .analogic.light_agent import light_agent
-from .analogic.temp_agent import temp_agent
-from .digital.digital_agent import digital_agent
+from src.server.agents.analogic.light_agent import light_agent
+from src.server.agents.analogic.temp_agent import temp_agent
+from src.server.agents.digital.digital_agent import digital_agent
 
 class agent_factory(object):
     def create(agent_data):

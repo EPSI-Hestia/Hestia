@@ -1,4 +1,4 @@
-from src.utils.json_parser import json_parser
+from src.commons.utils.json_parser import json_parser
 
 class ConfigurationException(Exception):
     pass

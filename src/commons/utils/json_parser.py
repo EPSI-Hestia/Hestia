@@ -1,4 +1,4 @@
-from utils.logger import logger
+from src.commons.utils.logger import logger
 import json
 import os
 

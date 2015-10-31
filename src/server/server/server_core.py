@@ -1,11 +1,11 @@
 import time
 import sys
 
-from server.server_config import server_config
-from agents.agent_factory import agent_factory
-from dao.model.board_model import board_model
-from utils.com_connexion import com_connexion
-from utils.logger import logger
+from src.server.server.server_config import server_config
+from src.server.agents.agent_factory import agent_factory
+from src.commons.dao.model.board_model import board_model
+from src.commons.utils.com_connexion import com_connexion
+from src.commons.utils.logger import logger
 
 class server_core(object):
 	def __init__(self, json_configuration_file):

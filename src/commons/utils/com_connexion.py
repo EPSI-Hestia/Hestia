@@ -1,5 +1,5 @@
 from nanpy import *
-from utils.logger import logger
+from src.commons.utils.logger import logger
 
 class com_connexion(object):
 

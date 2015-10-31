@@ -2,7 +2,7 @@ import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
-from src.main.agents.agent_widget import agent_widget
+from src.client.main.agents.agent_widget import agent_widget
 from src.main.configuration_loader import *
 
 class circe_main(QWidget):

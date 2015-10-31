@@ -1,5 +1,5 @@
 from nanpy import *
-from utils.logger import logger
+from src.commons.utils.logger import logger
 
 #TODO Refactring + import propre
 class pin(object):

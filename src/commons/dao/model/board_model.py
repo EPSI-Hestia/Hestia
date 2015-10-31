@@ -1,4 +1,4 @@
-from ..driver.mongo_driver import mongo_driver
+from src.commons.dao.driver.mongo_driver import mongo_driver
 
 class board_model(object):
 	def __init__(self, mongo_data):

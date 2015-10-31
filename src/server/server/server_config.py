@@ -1,5 +1,5 @@
-from utils.json_parser import json_parser
-from utils.logger import logger
+from src.commons.utils.json_parser import json_parser
+from src.commons.utils.logger import logger
 
 class ConfigurationException(Exception):
     pass

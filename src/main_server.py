@@ -1,9 +1,8 @@
-from server.server_core import server_core
-from utils.logger import logger
+from src.server.server.server_core import server_core
+from src.commons.utils.logger import logger
 
 import sys
 
-#TODO: Exception globale pour les erreurs non gere
 if __name__ == "__main__":
 	args = sys.argv[1:]
 

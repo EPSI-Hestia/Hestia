@@ -1,4 +1,4 @@
-from .analogic_agent import analogic_agent
+from src.server.agents.analogic.analogic_agent import analogic_agent
 
 class light_agent(analogic_agent):
 	def __init__(self,  agent_data):
