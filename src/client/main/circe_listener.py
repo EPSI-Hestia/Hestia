@@ -11,7 +11,7 @@ class circe_listener(QObject):
     def __init__(self, datas):
         QObject.__init__(self)
         self.listener = self.create_listener()
-        self.model = agent_model(datas, datas["mongo"], datas["board"])
+        self.model = agent_model(datas["mongo_datas"], datas['board_name']["name"], datas["agent"]["name"])
         self.listening = False
 
     def _del__(self):

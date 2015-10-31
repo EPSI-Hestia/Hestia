@@ -42,8 +42,8 @@ class core_gui(QWidget):
             for y in range(0, self.y_limit):
                 if(self.number_of_widgets_created < self.number_of_widgets_max):
                     datas = {}
-                    datas["mongo"] = self.configuration_loader.mongo_datas
-                    datas["board"] = self.configuration_loader.board
+                    datas["mongo_datas"] = self.configuration_loader.mongo_datas
+                    datas["board_name"] = self.configuration_loader.board
                     datas["agent"] = self.configuration_loader.agents_datas[self.number_of_widgets_created]
 
                     new_agent = agent_widget(datas)

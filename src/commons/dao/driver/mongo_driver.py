@@ -12,7 +12,6 @@ class mongo_driver(object):
 
 	def set_attr(self, datas):
 		self.conexion_available = True
-
 		credentials_string = 'mongodb://' + datas["mongo_user"] + ':' + datas["mongo_pwd"] + '@' + datas["mongo_host"] + ':' + str(datas["mongo_port"]) + '/' + datas["mongo_db"]
 
 		try:

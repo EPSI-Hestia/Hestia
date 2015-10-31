@@ -31,3 +31,4 @@ class agent_model(object):
 		datas["datetime"] = last_entry["datetime"].strftime('%d/%m/%Y - %H:%M:%S')
 
 		return datas
+
