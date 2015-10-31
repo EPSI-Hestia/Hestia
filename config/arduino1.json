@@ -10,7 +10,7 @@
 
 	"board":
 	{
-		"name" : "board.Name"
+		"name" : "arduino1"
 	},
 
 	"agents":

@@ -4,6 +4,7 @@
 bin
 dist
 build
+config
 
 .idea/
 .idea
