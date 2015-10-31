@@ -22,3 +22,12 @@ class agent_model(object):
 			last_entry["mode"] = "w"
 
 		return last_entry
+
+	def get_last_entry_value_and_date(self):
+		last_entry = self.collection.find_one({"name" : self.agent_name, "mode": "w"}, sort=[("datetime", pymongo.DESCENDING)])
+
+		datas = {}
+		datas["value"] = last_entry["value"]
+		datas["datetime"] = last_entry["datetime"].strftime('%d/%m/%Y - %H:%M:%S')
+
+		return datas

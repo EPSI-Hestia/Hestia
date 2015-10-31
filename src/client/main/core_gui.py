@@ -1,13 +1,12 @@
-import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 from src.client.main.agents.agent_widget import agent_widget
-from src.main.configuration_loader import *
+from src.commons.utils.configuration_loader import *
 
-class circe_main(QWidget):
+class core_gui(QWidget):
     def __init__(self):
-        super(circe_main, self).__init__()
+        super(core_gui, self).__init__()
         self.initUI()
 
     def initUI(self):
@@ -18,7 +17,6 @@ class circe_main(QWidget):
         self.setWindowTitle('Circe')
 
         self.add_basic_widgets()
-        self.show()
 
     @pyqtSlot()
     def select_configuration_file(self):
@@ -61,13 +59,7 @@ class circe_main(QWidget):
 
     def load_configuration_file(self):
         try:
-            self.configuration_loader = server_config(QFileDialog.getOpenFileName())
+            self.configuration_loader = configuration_loader(QFileDialog.getOpenFileName())
         except ConfigurationException, e:
             print e
             QApplication.quit()
-
-def main():
-    app = QApplication(sys.argv)
-    ex = circe_main()
-    sys.exit(app.exec_())
-

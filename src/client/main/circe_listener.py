@@ -1,4 +1,4 @@
-from src.dao.model.agent_model import agent_model
+from src.commons.dao.model.agent_model import agent_model
 
 from threading import Thread
 from PyQt4.QtCore import *
@@ -11,7 +11,7 @@ class circe_listener(QObject):
     def __init__(self, datas):
         QObject.__init__(self)
         self.listener = self.create_listener()
-        self.model = agent_model(datas)
+        self.model = agent_model(datas, datas["mongo"], datas["board"])
         self.listening = False
 
     def _del__(self):

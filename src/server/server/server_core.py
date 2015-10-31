@@ -1,7 +1,7 @@
 import time
 import sys
 
-from src.server.server.server_config import server_config
+from src.commons.utils.configuration_loader import configuration_loader
 from src.server.agents.agent_factory import agent_factory
 from src.commons.dao.model.board_model import board_model
 from src.commons.utils.com_connexion import com_connexion
@@ -15,7 +15,7 @@ class server_core(object):
 			self.run()
 
 	def init_attr(self, json_configuration_file):
-		self.configuration = server_config(json_configuration_file)
+		self.configuration = configuration_loader(json_configuration_file)
 		self.server_is_running = False
 
 		if self.configuration.is_loaded:

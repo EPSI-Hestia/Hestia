@@ -3,7 +3,7 @@ from src.commons.utils.json_parser import json_parser
 class ConfigurationException(Exception):
     pass
 
-class server_config(object):
+class configuration_loader(object):
 
 	def __init__(self, json_configuration_file):
 		self.init_attr(json_configuration_file)

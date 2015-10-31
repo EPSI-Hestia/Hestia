@@ -1,7 +1,8 @@
-import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-from src.main.agents.circe_listener import circe_listener
+
+from src.client.main.circe_listener import circe_listener
+
 
 class agent_widget(QWidget):
     def __init__(self, datas):

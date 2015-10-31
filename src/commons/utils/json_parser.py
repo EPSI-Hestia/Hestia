@@ -1,4 +1,5 @@
 from src.commons.utils.logger import logger
+from PyQt4.QtCore import QString
 import json
 import os
 
@@ -29,6 +30,11 @@ class json_parser(object):
 
 	def check_if_file_exists_and_its_valid_json(self):
 		is_valid = False
+
+		if isinstance(self.config_file, QString):
+			self.config_file = str(self.config_file)
+		elif self.config_file is None:
+			self.config_file = ""
 
 		if os.path.isfile(self.config_file) and self.config_file.endswith(".json"):
 			is_valid = True
