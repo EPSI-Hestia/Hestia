@@ -18,7 +18,7 @@ class agents(object):
 			self.command_thread = Thread(target=self.update)
 			self.command_thread.daemon = True
 			self.command_thread.start()
-			
+
 
 	def stop_command_thread(self):
 		self.stop = True
