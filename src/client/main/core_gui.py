@@ -14,16 +14,15 @@ class core_gui(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.main_layout = QVBoxLayout()
+        self.main_layout = QHBoxLayout()
         self.setLayout(self.main_layout)
-        self.setGeometry(30,30, 30, 30)
+        self.setGeometry(30, 30, 30, 30)
         self.setWindowTitle('Circe')
 
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
 
         self.add_basic_widgets()
-        self.main_layout.addLayout(self.grid)
 
     def add_basic_widgets(self):
         title = QLabel('Circe the minimalist generic client for Hestia')
@@ -46,7 +45,9 @@ class core_gui(QWidget):
         self.load_configuration_file()
 
         if(self.configuration_loader.is_loaded):
+            for i in range(self.layout().count()): self.layout().itemAt(i).widget().close()
             self.add_agents_selector_widget()
+            self.main_layout.addLayout(self.grid)
 
     def add_agents_selector_widget(self):
         self.list = QListView()
