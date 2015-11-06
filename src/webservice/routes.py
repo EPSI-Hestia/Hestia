@@ -9,17 +9,25 @@ def notfound(error):
     return "<h1>Nothing to see here</h1>"
 
 @error(500)
-def errorserver():
+def error_server():
     return "<h1>erreur du serveur</h1>"
 
-@route('/<boardname>/<agentname>/read/<value>')
+@error(400)
+def error400():
+    return "<h1> 400 - Bad request</h1>"
+
+@get('/<boardname>/<agentname>/read/<value>')
 def badurl(boardname, agentname, value):
-    abort(400, "Bad Request")
+    error400()
+
+@get('/<boardname>/<agentname>/write')
+def badurl(boardname, agentname):
+    return error400()
 
 
 @get('/boards')
 def board_list():
-    return "liste des boards"
+    return "liste des boards : "
 
 @get('/<boardname>')
 def agent_list(boardname):
