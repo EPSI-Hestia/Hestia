@@ -67,9 +67,14 @@ class agent_widget(QWidget):
         value = self.listener.get_value()
         last_date = self.listener.get_date()
 
-        if  str(float(value)) == "1.0":
+        try:
+            float(value)
+        except ValueError:
+            value = 0
+
+        if  str(value) == "1.0":
             value = "ON"
-        elif str(float(value)) == "0.0":
+        elif str(value) == "0.0":
             value = "OFF"
 
         last_date = str(last_date)
