@@ -4,6 +4,8 @@ from PyQt4.QtCore import *
 from src.client.main.agents.agent_widget import agent_widget
 from src.commons.utils.configuration_loader import *
 
+import src.res.images_rc
+
 class all_agent_widget(QWidget):
     def __init__(self):
         super(all_agent_widget, self).__init__()
@@ -24,18 +26,29 @@ class all_agent_widget(QWidget):
 
         self.add_basic_widgets()
 
+        self.select_configuration_file()
+
     def add_basic_widgets(self):
         title = QLabel('Circe the minimalist generic client for Hestia')
 
-        buttonLoadConfig = QPushButton('Load configuration')
-        self.connect(buttonLoadConfig, SIGNAL("clicked()"), self, SLOT("select_configuration_file()"))
+        icon = QIcon()
+        icon.addPixmap(QPixmap(":/Load"), QIcon.Normal, QIcon.Off)
+
+        self.buttonLoadConfig = QPushButton('Load configuration')
+        self.buttonLoadConfig.setIcon(icon)
+        self.buttonLoadConfig.setIconSize(QSize(24,24))
+        self.buttonLoadConfig.setFixedWidth(200)
+        self.connect(self.buttonLoadConfig, SIGNAL("clicked()"), self, SLOT("select_configuration_file()"))
 
         self.layout().addWidget(title)
-        self.layout().addWidget(buttonLoadConfig)
+        self.layout().addWidget(self.buttonLoadConfig)
 
     def load_configuration_file(self):
         try:
-            self.configuration_loader = configuration_loader(str(QFileDialog.getOpenFileName()))
+            file_dialog = QFileDialog(self)
+            file_dialog.selectNameFilter("Hestia Configuration File (*.json)")
+
+            self.configuration_loader = configuration_loader(str(file_dialog.getOpenFileName(self, 'Chose an Hestia configuration file')))
         except ConfigurationException, e:
             print e
             QApplication.quit()

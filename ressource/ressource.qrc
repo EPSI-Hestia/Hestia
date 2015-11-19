@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="/">
     <file alias='Add'>Add.png</file>
+    <file alias='Remove'>Remove.png</file>
+    <file alias='Load'>Load.png</file>
+    <file alias='Help'>Help.png</file>
+    <file alias='Map'>Map.png</file>
   </qresource>
 </RCC>
