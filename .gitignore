@@ -6,6 +6,8 @@ dist
 build
 config
 config/
+images_rc.py
+
 
 .idea/
 .idea

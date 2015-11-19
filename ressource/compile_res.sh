@@ -1,0 +1,1 @@
+pyrcc4 -o ../src/res/images_rc.py ressource.qrc
