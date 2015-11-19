@@ -12,6 +12,6 @@ class webservice_controller(object):
         def get_boards(self):
             return self.to_json(self.warehouse.get_list_boards())
 
-        def get_agents(self):
-             return self.to_json(self.warehouse.get_list_agents())
+        def get_agents(self, boardname):
+             return self.to_json(self.warehouse.get_list_agents(boardname))
 

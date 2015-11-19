@@ -18,7 +18,7 @@ class route_loader(object):
         return self.ws_controller.get_boards()
 
     def liste_agents(self, boardname):
-        return self.ws_controller.get_agents()
+        return self.ws_controller.get_agents(boardname)
 
     def write(self, boardname, agentname, value):
         return self.ws_controller.put_value_in(boardname,agentname,value)

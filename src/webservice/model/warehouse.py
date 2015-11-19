@@ -9,14 +9,14 @@ class warehouse(object):
 
 
     def get_list_boards(self):
-        collection_list = self.db.collection_names(include_system_collections=False)
+        boards_list = self.db.collection_names(include_system_collections=False)
         boards = []
-        for collection in collection_list:
-            if '.agents' in collection:
-                boards.append(collection.split(".")[0])
+        for board in boards_list:
+            if '.agents' in board:
+                boards.append(board.split(".")[0])
         return boards
 
-    def get_list_agents(self):
-        agents = []
-        return agents
+    def get_list_agents(self, boardname):
+        agents_list = self.db[boardname]["agents"].distinct('name')
+        return agents_list
 
