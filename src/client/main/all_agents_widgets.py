@@ -64,6 +64,7 @@ class all_agent_widget(QWidget):
 
     def add_agents_selector_widget(self):
         self.list = QListView()
+        self.list.setFixedWidth(200)
         model_list = QStandardItemModel(self.list)
 
         agents_name = []

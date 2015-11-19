@@ -39,3 +39,6 @@ class circe_listener(QObject):
 
     def get_date(self):
         return self.date
+
+    def get_last_entries(self, number_of_entries_to_get):
+        return self.model.get_last_entries(number_of_entries_to_get)

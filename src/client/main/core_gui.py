@@ -65,7 +65,7 @@ class core_gui(QWidget):
             self.number_of_tab += 1
             self.agents_widget = all_agent_widget()
             self.tabs.addTab(self.agents_widget, text + " - " + str(self.number_of_tab))
-            self.tabs.currentIndex(self.number_of_tab)
+            #self.tabs.currentIndex(self.number_of_tab)
 
     @pyqtSlot()
     def remove_tab(self):

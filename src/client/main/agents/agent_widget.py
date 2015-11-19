@@ -2,7 +2,9 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 from src.client.main.circe_listener import circe_listener
+from src.client.main.details_widget import details_widget
 
+import src.res.images_rc
 
 class agent_widget(QWidget):
     def __init__(self, datas):
@@ -25,6 +27,7 @@ class agent_widget(QWidget):
 
     def init_UI(self, datas):
         self.setProperty("bordered", True)
+        self.setFixedSize(300, 250)
 
         self.grid = QGridLayout()
 
@@ -32,10 +35,20 @@ class agent_widget(QWidget):
 
         self.label_name = QLabel(datas["name"])
         self.label_name.setObjectName('label_name')
-        self.label_name.setStyleSheet('QLabel#label_name {color: #000ddd; font-size:20px;}')
+        self.label_name.setStyleSheet('QLabel#label_name {color: #000ddd; font-size:15px;}')
 
         self.grid.addWidget(self.label_name, 0, 0)
         self.label_lib_actual_value = QLabel("Actual value :")
+
+        icon = QIcon()
+        icon.addPixmap(QPixmap(":/Search"), QIcon.Normal, QIcon.Off)
+
+        self.buttonDetails = QPushButton('Details')
+        self.buttonDetails.setIcon(icon)
+        self.buttonDetails.setIconSize(QSize(24,24))
+        self.buttonDetails.setFixedWidth(100)
+        self.connect(self.buttonDetails, SIGNAL("clicked()"), self, SLOT("show_details()"))
+        self.grid.addWidget(self.buttonDetails, 0, 1)
 
         if datas["pin_type"] == "digital":
             self.value_digital_widgets()
@@ -95,7 +108,10 @@ class agent_widget(QWidget):
     def analogic_value_to_write(self):
         self.listener.model.insert(str(self.input_new_value.value()))
 
-
+    @pyqtSlot()
+    def show_details(self):
+        w = details_widget(self, self.listener.get_last_entries(50))
+        w.show()
 
     def value_update_digital_widgets(self):
         self.label_lib_change_value = QLabel("Change value :")

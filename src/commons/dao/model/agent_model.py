@@ -32,3 +32,6 @@ class agent_model(object):
 
 		return datas
 
+	def get_last_entries(self, number_of_entries):
+		return self.collection.find({"name" : self.agent_name}).limit(number_of_entries).sort("datetime", -1)
+
