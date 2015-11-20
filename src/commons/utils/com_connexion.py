@@ -10,7 +10,7 @@ class com_connexion(object):
 		if sys.platform.startswith('win'):
 			ports = ['COM%s' % (i + 1) for i in range(256)]
 		elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
-			ports = glob.glob('/dev/tty[A-Za-z]*')
+			ports = glob.glob('/dev/tty*')
 		elif sys.platform.startswith('darwin'):
 			ports = glob.glob('/dev/tty.*')
 		else:
@@ -22,8 +22,12 @@ class com_connexion(object):
 				s = serial.Serial(port)
 				s.close()
 
-				if "usbmodem" in port:
+				if sys.platform.startswith('darwin'):
+					if "usbmodem" in port:
+						result.append(port)
+				else:
 					result.append(port)
+					
 			except (OSError, serial.SerialException):
 				pass
 
