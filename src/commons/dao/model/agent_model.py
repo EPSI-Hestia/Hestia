@@ -10,8 +10,13 @@ class agent_model(object):
 		#self.collection.remove()
 		self.agent_name = _agent_name
 
-	def insert(self, value):
-		self.collection.insert({"name" : self.agent_name, "value" : value, "datetime" : datetime.datetime.utcnow(), "mode" : "w"})
+	def insert(self, value, mode = False):
+		if mode :
+			writting_mode = "r"
+		else:
+			writting_mode = "w"
+
+		self.collection.insert({"name" : self.agent_name, "value" : value, "datetime" : datetime.datetime.utcnow(), "mode" : writting_mode})
 
 	def get_last_entry(self):
 		last_entry = self.collection.find_one({"name" : self.agent_name}, sort=[("datetime", pymongo.DESCENDING)])

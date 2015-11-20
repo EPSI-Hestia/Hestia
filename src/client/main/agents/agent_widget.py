@@ -106,7 +106,7 @@ class agent_widget(QWidget):
 
     @pyqtSlot()
     def analogic_value_to_write(self):
-        self.listener.model.insert(str(self.input_new_value.value()))
+        self.listener.model.insert(str(self.input_new_value.value()), True)
 
     @pyqtSlot()
     def show_details(self):

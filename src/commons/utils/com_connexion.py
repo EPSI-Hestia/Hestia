@@ -27,7 +27,7 @@ class com_connexion(object):
 						result.append(port)
 				else:
 					result.append(port)
-					
+
 			except (OSError, serial.SerialException):
 				pass
 
