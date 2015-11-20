@@ -1,4 +1,6 @@
 from nanpy import *
+
+from src.commons.utils.com_connexion import com_connexion
 from src.commons.utils.logger import logger
 
 #TODO Refactring + import propre
@@ -7,7 +9,7 @@ class pin(object):
 	def __init__(self, _pin_number, _pin_mode, _pin_type):
 		self.pin_number = _pin_number
 		self.pin_type = _pin_type
-		self.arduino = ArduinoApi(SerialManager())
+		self.arduino = ArduinoApi(SerialManager(com_connexion.serial_ports()[0]))
 
 		if _pin_mode == "INPUT":
 			mode = self.arduino.INPUT
@@ -41,3 +43,4 @@ class pin(object):
 				self.arduino.analogWrite(self.pin_number, str(value))
 		except:
 			logger.error("Arduino communication fail !")
+
