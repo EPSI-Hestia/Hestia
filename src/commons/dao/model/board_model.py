@@ -8,6 +8,18 @@ class board_model(object):
 	def flush_collection(self, board_name):
 		self.db[board_name].remove()
 
+	def get_list_boards(self):
+		boards_list = self.db.collection_names(include_system_collections=False)
+		boards = []
+		for board in boards_list:
+			if '.agents' in board:
+				boards.append(board.split(".")[0])
+		return boards
+
+	def get_list_agents(self, boardname):
+		agents_list = self.db[boardname]["agents"].distinct('name')
+		return agents_list
+
 	@property
 	def connection_established(self):
 		return self.mongo_client.connected

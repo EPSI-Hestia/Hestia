@@ -9,8 +9,8 @@ class route_loader(object):
     def load_all_route(self):
         self.app.route('/', callback=self.liste_boards)
         self.app.route('/<boardname>', callback=self.liste_agents)
-        self.app.route('/<boardname>/<agentname>/write/<value>', callback=self.write)
-        self.app.route('/<boardname>/<agentname>/read', method="PUT", callback=self.valeur_agent)
+        self.app.route('/<boardname>/<agentname>/write', method="POST", callback=self.write)
+        self.app.route('/<boardname>/<agentname>/read', callback=self.valeur_agent)
         self.app.route('/<boardname>/<agentname>/read/last/<number:int>', callback=self.last_value_agent)
         self.app.route('/<boardname>/<agentname>/read/first/<number:int>', callback=self.first_value_agent)
 
@@ -20,8 +20,8 @@ class route_loader(object):
     def liste_agents(self, boardname):
         return self.ws_controller.get_agents(boardname)
 
-    def write(self, boardname, agentname, value):
-        return self.ws_controller.put_value_in(boardname,agentname,value)
+    def write(self, boardname, agentname):
+        return self.ws_controller.post_value_in(boardname,agentname)
 
     def valeur_agent(self, boardname, agentname):
         return self.ws_controller.get_value_in(boardname,agentname)

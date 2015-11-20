@@ -29,9 +29,35 @@ class agent_model(object):
 		datas = {}
 		datas["value"] = last_entry["value"]
 		datas["datetime"] = last_entry["datetime"].strftime('%d/%m/%Y - %H:%M:%S')
+		datas["mode"] = last_entry["mode"]
 
 		return datas
 
 	def get_last_entries(self, number_of_entries):
-		return self.collection.find({"name" : self.agent_name}).limit(number_of_entries).sort("datetime", -1)
+		last_number_values = self.collection.find({"name" : self.agent_name}).limit(number_of_entries).sort("datetime", -1)
+
+		values = []
+		for last_number_value in last_number_values:
+			entry = {}
+			entry["value"] = last_number_value["value"]
+			entry["datetime"] = last_number_value["datetime"].strftime('%d/%m/%Y - %H:%M:%S')
+			entry["mode"] = last_number_value["mode"]
+
+			values.append(entry)
+
+		return values
+
+	def get_first_entries(self, number_of_entries):
+		first_number_values = self.collection.find({"name" : self.agent_name}).limit(number_of_entries).sort("datetime", 1)
+
+		values = []
+		for first_number_value in first_number_values:
+			entry = {}
+			entry["value"] = first_number_value["value"]
+			entry["datetime"] = first_number_value["datetime"].strftime('%d/%m/%Y - %H:%M:%S')
+			entry["mode"] = first_number_value["mode"]
+
+			values.append(entry)
+
+		return values
 
