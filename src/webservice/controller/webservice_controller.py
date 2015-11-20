@@ -35,4 +35,4 @@ class webservice_controller(object):
         def post_value_in(self,boardname, agentname):
             self.agent_model = agent_model(self._mongo_datas, boardname, agentname)
             value = request.forms.get('value')
-            return self.to_json(self.agent_model.insert(value))
+            return self.to_json(self.agent_model.insert(value, True))
