@@ -29,7 +29,7 @@ class agent_model(object):
 		return last_entry
 
 	def get_last_entry_value_and_date(self):
-		last_entry = self.collection.find_one({"name" : self.agent_name, "mode": "w"}, sort=[("datetime", pymongo.DESCENDING)])
+		last_entry = self.collection.find_one({"name" : self.agent_name}, sort=[("datetime", pymongo.DESCENDING)])
 
 		datas = {}
 		datas["value"] = last_entry["value"]

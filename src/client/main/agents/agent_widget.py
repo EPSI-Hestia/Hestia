@@ -102,7 +102,7 @@ class agent_widget(QWidget):
         if(self.input_new_value.currentText() == "ON"):
             value = 1
 
-        self.listener.model.insert(value)
+        self.listener.model.insert(value, True)
 
     @pyqtSlot()
     def analogic_value_to_write(self):
