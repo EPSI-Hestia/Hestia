@@ -21,6 +21,7 @@ class webservice_controller(object):
             return self.to_json(self.board_model.get_list_agents(boardname))
 
         def get_value_in(self, boardname, agentname):
+            self.agent_model = []
             self.agent_model = agent_model(self._mongo_datas, boardname, agentname)
             return self.to_json(self.agent_model.get_last_entry_value_and_date())
 

@@ -32,9 +32,10 @@ class agent_model(object):
 		last_entry = self.collection.find_one({"name" : self.agent_name}, sort=[("datetime", pymongo.DESCENDING)])
 
 		datas = {}
-		datas["value"] = last_entry["value"]
-		datas["datetime"] = last_entry["datetime"].strftime('%d/%m/%Y - %H:%M:%S')
-		datas["mode"] = last_entry["mode"]
+		if last_entry is not None:
+			datas["value"] = last_entry["value"]
+			datas["datetime"] = last_entry["datetime"].strftime('%d/%m/%Y - %H:%M:%S')
+			datas["mode"] = last_entry["mode"]
 
 		return datas
 
