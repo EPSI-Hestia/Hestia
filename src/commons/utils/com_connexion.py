@@ -12,7 +12,7 @@ class com_connexion(object):
 		elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
 			ports = glob.glob('/dev/tty*')
 		elif sys.platform.startswith('darwin'):
-			ports = glob.glob('/dev/tty.*')
+			ports = glob.glob('/dev/tty.*usbmodem*')
 		else:
 			raise EnvironmentError('Unsupported platform')
 
@@ -21,12 +21,7 @@ class com_connexion(object):
 			try:
 				s = serial.Serial(port)
 				s.close()
-
-				if sys.platform.startswith('darwin'):
-					if "usbmodem" in port:
-						result.append(port)
-				else:
-					result.append(port)
+				result.append(port)
 
 			except (OSError, serial.SerialException):
 				pass
@@ -35,17 +30,22 @@ class com_connexion(object):
 
 	def is_available(show_log = False):
 		try:
-			ArduinoApi(SerialManager(com_connexion.serial_ports()[0]))
-			connexion_established = True
+			if com_connexion.serial_ports().size() > 0:
+				ArduinoApi(SerialManager(com_connexion.serial_ports()[0]))
+				connexion_established = True
 
-			if show_log:
-				logger.info("Board available")
+				if show_log:
+					logger.info("Board available")
+			else:
+				connexion_established = False
+				logger.error("No Board available")
+
+
 		except:
 			connexion_established = False
 
 		if not connexion_established:
-			logger.error("Board is not available")
-			print "Board is not available"
+			logger.error("Connexion failed while trying to connect")
 
 		return connexion_established
 
