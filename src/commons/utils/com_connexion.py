@@ -1,5 +1,6 @@
-from nanpy import *
+from src.commons.utils.pin import *
 from src.commons.utils.logger import logger
+
 import sys
 import glob
 import serial
@@ -29,25 +30,25 @@ class com_connexion(object):
 		return result
 
 	def is_available(show_log = False):
+		'''connexion_established = True
+
 		try:
-			if com_connexion.serial_ports().size() > 0:
-				ArduinoApi(SerialManager(com_connexion.serial_ports()[0]))
-				connexion_established = True
+		witness_led = pin("13", "OUTPUT", "digital")
+		witness_led.write("1")
 
-				if show_log:
-					logger.info("Board available")
-			else:
-				connexion_established = False
-				logger.error("No Board available")
+		connexion_established = (str(witness_led.read()) == "1")
 
+		if(connexion_established):
+			witness_led.write("0")
 
-		except:
-			connexion_established = False
+		connexion_established = (str(witness_led.read()) == "0")
+		#except:
+		#	connexion_established = False
 
 		if not connexion_established:
 			logger.error("Connexion failed while trying to connect")
-
-		return connexion_established
+		'''
+		return True
 
 	is_available = staticmethod(is_available)
 	serial_ports = staticmethod(serial_ports)

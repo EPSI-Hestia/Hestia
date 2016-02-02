@@ -3,7 +3,7 @@ from nanpy import *
 from src.commons.utils.com_connexion import com_connexion
 from src.commons.utils.logger import logger
 
-#TODO Refactring + import propre
+
 class pin(object):
 
 	def __init__(self, _pin_number, _pin_mode, _pin_type):
