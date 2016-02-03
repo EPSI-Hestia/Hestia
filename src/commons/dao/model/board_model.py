@@ -20,6 +20,9 @@ class board_model(object):
 		agents_list = self.db[boardname]["agents"].distinct('name')
 		return agents_list
 
+	def remove_agent_data(self, boardname, agent_name):
+		self.db[boardname]["agents"].remove({"name" : agent_name})
+
 	@property
 	def connection_established(self):
 		return self.mongo_client.connected

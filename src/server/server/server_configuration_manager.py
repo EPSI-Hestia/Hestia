@@ -42,7 +42,17 @@ class server_configuration_manager(object):
 			self.agents.append(agent_factory.create(agent_data))
 
 	def set_up_databases(self):
-		self.board_model.flush_collection(self.configuration.board['name'])
+		agents_in_db_list = self.board_model.get_list_agents(self.configuration.board['name'])
+
+		for db_agent in agents_in_db_list:
+			agent_find = False
+			for config_file_agent in self.configuration.agents_datas:
+				if config_file_agent["name"] == db_agent:
+					agent_find = True
+
+			if not agent_find:
+				print db_agent + " not found removing from database"
+				self.board_model.remove_agent_data(self.configuration.board['name'], db_agent)
 
 	def all_ressources_are_available(self):
 		self.server_can_run = self.configuration.is_loaded and com_connexion.is_available() and self.board_model.connection_established
