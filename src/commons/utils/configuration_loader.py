@@ -14,7 +14,6 @@ class configuration_loader(object):
 		self.mongo_properties = {}
 		self.board_properties = {}
 		self.agents_datas = []
-		self.composite_datas = []
 		self.json_file_loaded = True
 
 	def parse_configuration_file(self):
@@ -23,7 +22,6 @@ class configuration_loader(object):
 				self.set_mongo_properties()
 				self.set_board_properties()
 				self.set_agents_datas()
-				self.set_composites_datas()
 			except ConfigurationException as e:
 				print e
 				self.json_file_loaded = False
@@ -66,9 +64,6 @@ class configuration_loader(object):
 
 			if agent["name"] is "" or agent["pin_type"] is "" or agent["pin"] is "" or agent["pin_mode"] is "" or (not int(agent["pin"])):
 				raise ConfigurationException("One Agent's configuration is unvalid !")
-
-	def set_composites_datas(self):
-		self.composite_datas = self.parser.get_value_by_key("composites")
 
 	@property
 	def is_loaded(self):
