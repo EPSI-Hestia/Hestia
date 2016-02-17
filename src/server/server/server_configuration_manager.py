@@ -26,8 +26,8 @@ class server_configuration_manager(object):
 		if self.configuration.is_loaded:
 			logger.info("Initialize communication with Hestia city")
 			self.board_model = board_model(self.configuration.mongo_datas)
-			self.set_up_databases()
 			logger.info("Communication with Hestia city established")
+			self.set_up_databases()
 
 			logger.info("Initialisation of the Hestia agent's")
 			self.agents = []
@@ -51,7 +51,7 @@ class server_configuration_manager(object):
 					agent_find = True
 
 			if not agent_find:
-				print db_agent + " not found removing from database"
+				logger.info(db_agent + " not found removing from database")
 				self.board_model.remove_agent_data(self.configuration.board['name'], db_agent)
 
 	def all_ressources_are_available(self):

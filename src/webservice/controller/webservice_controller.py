@@ -48,4 +48,5 @@ class webservice_controller(object):
             self.set_http_headers()
             self.agent_model = agent_model(self._mongo_datas, boardname, agentname)
             value = request.forms.get('value')
-            return self.to_json(self.agent_model.insert(value, True))
+
+            return self.to_json(self.agent_model.insert(int(value), True))

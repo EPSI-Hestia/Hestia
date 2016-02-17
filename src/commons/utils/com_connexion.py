@@ -27,6 +27,9 @@ class com_connexion(object):
 			except (OSError, serial.SerialException):
 				pass
 
+		#for res in result:
+		#	print res*/
+
 		return result
 
 	def is_available(show_log = False):

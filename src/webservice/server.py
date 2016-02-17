@@ -12,4 +12,4 @@ class server(object):
         routes.load_all_route()
 
     def start(self):
-        self._app.run(host="localhost", port=8080)
+        self._app.run(host="172.20.10.14", port=8080)
