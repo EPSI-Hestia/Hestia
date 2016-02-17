@@ -32,10 +32,19 @@ class agents(object):
 		return ""
 
 	def refresh(self):
-		last_entry = self.model.get_last_entry()
+		last_entries = self.model.get_last_entries(5)
 
-		if last_entry["mode"] == "r":
-			value = last_entry["value"]
+		event_find = False
+		value_to_write = ""
+
+		for entry in last_entries:
+			if entry["mode"] == "r":
+				event_find = True
+				value_to_write = entry["value"]
+				self.model.disengage_event(entry["datetime"])
+
+		if event_find:
+			value = value_to_write
 			self.pin.write(value)
 			logger.event(self.name + " value has been updated : " + str(self.value()))
 

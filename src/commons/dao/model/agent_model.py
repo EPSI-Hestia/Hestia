@@ -67,3 +67,5 @@ class agent_model(object):
 
 		return values
 
+	def disengage_event(self, date_of_the_event):
+		a = self.collection.update_one({"name" : self.agent_name, "mode" : "r", "datetime" : date_of_the_event}, {"$set":{"mode":"e"}})
